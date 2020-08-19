@@ -15,7 +15,7 @@ jobs:
     name: Greeting
     # This job runs on Linux
     runs-on: ubuntu-latest
-    if: contains( github.event.pull_request.labels.*.name, 'run integration tests')
+    if: ${{ github.event_name == 'push' || contains( github.event.pull_request.labels.*.name, 'run integration tests') }}
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
