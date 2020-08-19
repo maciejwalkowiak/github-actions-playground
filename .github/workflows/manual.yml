@@ -1,6 +1,11 @@
 name: Manual workflow
 # This workflow is triggered on pushes to the repository.
 on:
+  push:
+    branches:
+      - master
+      - 2.2.x
+      - 2.3.x
   pull_request:
     types: [labeled]
 
@@ -20,4 +25,4 @@ jobs:
         id: hello
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
-        run: echo 'Sent by ${{ toJson(github.event.sender.login) }}.'
+        run: echo 'Sent by ${{ toJson(github.event.pull_request.labels) }}.'
