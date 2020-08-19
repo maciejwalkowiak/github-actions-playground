@@ -1,3 +1,3 @@
 # github-actions-playground
 
-Some branch
+Another branch
