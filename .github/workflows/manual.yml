@@ -1,8 +1,8 @@
 name: Manual workflow
 # This workflow is triggered on pushes to the repository.
 on:
-  pull_request_review_comment:
-    types: [created]
+  pull_request:
+    types: [labeled]
 
 jobs:
   build:
@@ -10,6 +10,7 @@ jobs:
     name: Greeting
     # This job runs on Linux
     runs-on: ubuntu-latest
+    if: contains( github.event.pull_request.labels.*.name, 'Run IT')
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
